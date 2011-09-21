@@ -1,0 +1,66 @@
+
+body {
+  padding: 0;
+  margin: 0;
+  
+  background-color: #ffe;
+}
+
+#cn_bgCanvas {
+
+  /*border: dotted 1px #333;*/
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /*background-color: #fef;*/
+}
+#cn_statusCanvas {
+
+  /*border: dotted 1px #333;*/
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /*background-color: #fef;*/
+}
+#cn_highlightCanvas {
+
+  /*border: dotted 1px #333;*/
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+#cn_mainCanvas {
+
+  /*border: dotted 1px #333;*/
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /*opacity: 0;*/
+  cursor: crosshair;
+}
+
+#speed {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  background-color: #f00;
+  width: 100px;
+  height: 10px;
+}
