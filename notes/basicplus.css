@@ -1,0 +1,393 @@
+/* Defaults */
+/*
+  Basic style definitions and tweaks.
+ */
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-family: georgia, serif;
+    color: #666;
+    font-weight: normal
+}
+body {
+    font-family: verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #fcfcfc;
+
+    /*font-size: 0.8em;*/
+}
+input {
+    font-family: verdana;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    color: #49b;
+}
+a:hover {
+    color: #279;
+}
+
+html {
+    min-height: 101%;
+}
+
+em {
+    color: #666;
+}
+
+/* Reset Styles */
+h1 {
+  font-size: 2em; /*important for layout sizing*/
+}
+
+/* Fancy Heading Styles */
+
+h1 {
+    margin: 0 0 1em 0;
+    padding: 0 0 0 0;
+    color: #333;
+    border-bottom: solid 5px #057;
+}
+
+h2 {
+    margin: 0 0 1em 0;
+    padding: 0 0 0 0;
+    color: #333;
+    border-bottom: solid 3px #279;
+}
+
+h3 {
+    margin: 0 0 1em 0;
+    padding: 0.5em 0 0 0;
+    color: #333;
+    border-bottom: solid 2px #49b;
+}
+
+h4 {
+    margin: 0 0 1em 0;
+    padding: 1em 0 0 0em;
+    color: #333;
+    border-bottom: solid 1px #49b;
+}
+
+h3 span,
+h4 span {
+    color: #666;
+    font-size: 0.9em;
+}
+h3 span:before,
+h4 span:before {
+    content: " - ";
+}
+
+/* Fancy Table Styles */
+/*
+  Note: Tables also require `cellspacing="0"` in the HTML.
+*/
+thead th,
+thead td {
+  border-bottom: solid 2px #279;
+}
+tfoot th,
+tfoot td {
+    border-top: solid 2px #999;
+}
+table td,
+table th {
+  padding: 0.2em 0.5em;
+}
+tr.even {
+  background-color: #eef;
+}
+tbody tr:hover,
+tbody tr:hover td {
+  background-color: #ecdcdc;
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+/* DataTables */
+.dataTables_wrapper {
+    /*clear: none;*//*fix may not be needed now*/
+}
+.dataTables_filter input {
+    width: 10em;
+    display: inline;
+}
+.paginate_enabled_next,
+.paginate_enabled_previous,
+.paginate_disabled_next,
+.paginate_disabled_previous {
+    font-weight: bold;
+    color: #279;
+    cursor: pointer;
+    background: none !important;
+}
+.paginate_disabled_next,
+.paginate_disabled_previous {
+    color: #ccc;
+    cursor: default;
+}
+/* The following may not work with IE */
+.paginate_enabled_next:before,
+.paginate_disabled_next:before {
+    content: "\2192";
+}
+.paginate_enabled_previous:before,
+.paginate_disabled_previous:before {
+    content: "\2190";
+}
+/* Sorting */
+/*#control-ui-main tbody td:first-child {
+  border-left: none;
+}*/
+/*#control-ui-main tr:nth-child(even) {
+  background-color: #eef;
+}*/
+/*#control-ui-main tbody tr:nth-child(even):hover {
+  background-color: #dcdcec;
+}*//*
+tr.odd td.sorting_1 {
+	background-color: #ececfc;
+}
+tr.even td.sorting_1 {
+	background-color: #dcdcec;
+}*/
+/* if showing sorted column, also need hover colours*/
+
+
+/* Fancy Buttons */
+a.button,
+input[type="button"],
+input[type="submit"] {
+    border: solid 1px #999;
+    padding: 0.3em 0.5em;
+    border-radius: 7px;
+    background: -webkit-linear-gradient(top, #eef 0%,#dde 100%);
+    cursor: pointer;
+}
+a.button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover  {
+    background: -webkit-linear-gradient(top, #eef 0%,#ccf 100%);
+}
+/* Fancy Button Colours */
+a.button.cation,
+input.caution[type="button"],
+input.caution[type="submit"] {
+    border-color: #f00;
+}
+/* Automatically add caution class to submit with a confirm message? */
+
+/* Fancy Forms */
+form { display: inline; }
+form.fancy {
+    display: block;
+}
+form.fancy label,
+form.fancy input {
+    width: 13em;
+    margin:0 0.5em;
+    float: left;
+}
+form.fancy label {
+    text-align: right;
+}
+form.fancy input[type="button"],
+form.fancy input[type="submit"] {
+    float: none;
+}
+form.fancy hr {
+    border: none;
+    border-top: dashed 1px #49b;
+}
+/*form.fancy p,
+form.fancy hr {
+    clear: both;
+    margin:0.5em;
+    text-align: center;
+}*/
+form.fancy p:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+/* Protect some other things.. */
+.ui-dialog label,
+.ui-dialog input {
+    width: 13em;
+    margin:0 0.5em;
+    float: left;
+}
+.ui-dialog label {
+    text-align: right;
+}
+.ui-dialog input[type="button"],
+.ui-dialog input[type="submit"] {
+    float: none;
+}
+.ui-dialog input[type="button"],
+.ui-dialog input[type="submit"] {
+    float: none;
+}
+.ui-dialog hr {
+    border: none;
+    border-top: dashed 1px #49b;
+}
+/*form.fancy p,
+form.fancy hr {
+    clear: both;
+    margin:0.5em;
+    text-align: center;
+}*/
+.ui-dialog p:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* Fancy Tables */
+.fancy-table {
+    border: dashed 1px #999;
+    padding: 1em;
+}
+.fancy-table .hide-id-col td:first-child,
+.fancy-table .hide-id-col th:first-child {
+    display:none;
+}
+.fancy-table .hide-id-col td.more:first-child {
+    display: table-cell;
+}
+.fancy-table .more {
+    border: solid 1px #999;
+    border-width: 0 1px 1px 1px;
+    background-color: #f6f6f6;
+    background: -webkit-linear-gradient(top, #fcfcfc 0%,#f6f6f6 100%);
+    cursor: default;
+}
+/* I don't think this works! *
+#mytable_paginate:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+*/
+
+/* Fancy Icons */
+.icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    float: left;
+    display: block;
+}
+.icon.add {
+    background:url('./../lib/icons/add.png');
+}
+.icon.rm {
+    background:url('./../lib/icons/delete.png');
+}
+
+
+/* Helpful Classes */
+.right {
+    float: right;
+}
+.right.button {
+    margin: 0.5em;
+}
+.no-margin {
+    margin:0;
+}
+
+/* Code, Links, Previews */
+pre,
+code {
+  border: solid 1px #999;
+  background-color: #fefefe;
+  padding: 0.2em;
+}
+div.preview {
+  border: solid 1px #999;
+  background-color: #fcfcff;
+  padding: 1em;
+}
+blockquote {
+  border: 1px solid #49B;
+  padding: 1em;
+  background-color: #f6f6ff;
+  font-style: italic;
+}
+/* saviour for 'blockquote p' */
+blockquote {
+  padding: 0 1em;
+}
+
+#ui-main a {
+  cursor: pointer;
+  /*padding-right: 18px;
+  background: url('lib/icons/page_white_world.png') right 2px no-repeat;*/
+}
+#ui-main a:before {
+    content: "[";
+    color: #666;
+    font-style: normal;
+    font-weight: normal;
+}
+#ui-main a:after {
+    content: "]";
+    color: #666;
+    font-style: normal;
+    font-weight: normal;
+}
+
+#ui-main hr {
+    border: none;
+    border-bottom: dashed 2px #49B;
+    margin: 1.5em 0;
+}
+
+/* Acronym? */
+acronym,
+abbr {
+  border-bottom: dashed 1px #999;
+  cursor: help;
+  color: #333;
+}
+acronym:hover,
+abbr:hover {
+  color: #000;
+}
+
+
+/* Extra Styles */
+
+#ui-main .warning {
+    border: solid 1px #f00;
+    padding: 0.5em;
+    background-color: #fee;
+}
+#ui-main .warning strong {
+    color: #f00;
+}
+
+#ui-main .notice {
+    border: solid 1px #00f;
+    padding: 0.5em;
+    background-color: #eef;
+}
+#ui-main .notice strong {
+    color: #00f;
+}

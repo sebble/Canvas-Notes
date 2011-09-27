@@ -6,22 +6,27 @@
   <link rel="stylesheet" href="notes.css" />
   
   <!-- jQuery -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.js"></script>
   <!-- CodeMirror2 -->
   <link rel="stylesheet" href="lib/codemirror.css" />
   <script type="text/javascript" src="lib/codemirror.js"></script>
   <link rel="stylesheet" href="theme/default.css">
-  <!-- MathJax
-  ... -->
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <!-- Canvas Notes -->
   <script type="text/javascript" src="notes.js"></script>
   <script type="text/javascript" src="cn.source.js"></script>
   
 </head>
 <body id="cn">
-<div id="cn_toolbar"><p>Filename: <input value="Untitled_Document" /></p></div>
+<div id="cn_toolbar"><p>Filename: <input id="cn_input" value="Untitled_Document" /></p></div>
 <div id="cn_source"><textarea id="cn_source_ta"></textarea></div>
-<div id="cn_preview"></div>
+<div id="cn_preview"><iframe id="cn_iframe" src="iframe.html"></iframe></div>
 <div id="cn_canvas">
   <canvas id="cn_bgCanvas"></canvas>
   <canvas id="cn_hlCanvas"></canvas>

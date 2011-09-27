@@ -69,6 +69,7 @@ var CanvasNotes = {
           break;
         case 83: // S
           console.log('Save Document');
+          CanvasNotes.documentSave();
           break;
         case 83: // O
           console.log('Open Document');
@@ -190,16 +191,6 @@ var CanvasNotes = {
         break;
     }
     CanvasNotes.editor.refresh();
-  },
-  
-  updatePreview: function(){
-  
-    var $preview = $('#cn_preview');
-    // check visible, start timeout
-    if($preview.width() > 10){
-      //CanvasNotes.editor.replaceSelection("<span>findme</span>");
-      $preview.html(CanvasNotes.editor.getValue());
-    }
   },
   
   setCanvas: function(visible){
@@ -629,7 +620,7 @@ var CanvasNotes = {
     CanvasNotes.editor.setCursor(CanvasNotes.CodeMirrorCursor);
     console.log(CanvasNotes.editor.getCursor());
     CanvasNotes.editor.focus();
-    CanvasNotes.editor.replaceSelection("<img src='"+img+"' alt='sketch' class='cn_sketch' />");
+    CanvasNotes.editor.replaceSelection("{{{<img src='"+img+"' alt='sketch' class='cn_sketch' />}}}\n");
     //CanvasNotes.editor.replaceSelection("Hello");
   },
   
@@ -637,6 +628,71 @@ var CanvasNotes = {
   
     CanvasNotes.setCanvas(true);
     // more stuff to load last image into foreground
+  },
+  
+  documentSave: function(){
+  
+    // something
+    var dm = CanvasNotes.editor.getValue();
+    var fn = $('#cn_input').val();
+    $.ajax({
+      async: false,
+      cache: false,
+      data: {dm: dm, mode: 'save', fn: fn },
+      success: function(data){
+        console.log("Saved success?");
+        //console.log(data);
+      },
+      type: 'POST',
+      url: "sys/notes.php"
+    });
+  },
+  
+  updatePreview: function(){
+  
+    // check visible, start timeout
+    if($('#cn_preview').width() > 10){
+      //CanvasNotes.editor.replaceSelection("<span>findme</span>");
+      console.log("update?");
+      clearTimeout(window.updateTimer);
+      window.updateTimer = setTimeout(function(){
+        console.log("update!");
+      var dm = CanvasNotes.editor.getValue();
+      var fn = $('#cn_input').val();
+    $.ajax({
+      async: false,
+      cache: false,
+      data: {dm: dm, mode: 'parse', fn: fn },
+      dataType: 'json',
+      success: function(data){
+        console.log("Parsed");
+        $('#cn_iframe').contents().find('body').html(data.html);
+      },
+      type: 'POST',
+      url: "sys/notes.php"
+    });
+      
+      }, 600);
+    }
+  },
+  
+  documentLoad: function(){
+  
+    // something else
+    console.log("Load");
+    var fn = $('#cn_input').val();
+    $.ajax({
+      async: false,
+      cache: false,
+      data: {mode: 'load', fn: fn},
+      dataType: 'json',
+      success: function(data){
+        //console.log(data);
+        CanvasNotes.editor.setValue(data.src);
+      },
+      type: 'POST',
+      url: "sys/notes.php"
+    });
   }
 };
 
@@ -683,6 +739,7 @@ $(function(){
     },
     onKeyEvent: function(i, e) {
       if (e.type == 'keydown') {
+        if(CanvasNotes.viewMode == 'canvas') return;
         if(CanvasNotes.keyPress(e, 'source')) e.stop();
       }
     }
@@ -696,4 +753,12 @@ $(function(){
   CanvasNotes.ctxHl = document.getElementById('cn_hlCanvas').getContext("2d");
   CanvasNotes.ctxSk = document.getElementById('cn_skCanvas').getContext("2d");
   CanvasNotes.ctxSt = document.getElementById('cn_stCanvas').getContext("2d");
+  
+  // enable loading
+  $('#cn_input').parent().keypress(function(e){
+    if (e.keyCode==13) {
+      e.preventDefault();
+      CanvasNotes.documentLoad();
+    }
+  });
 });
