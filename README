@@ -1,0 +1,27 @@
+Please see notes/index.html
+
+Keyboard Shortcuts:
+
+ Document mode:
+  <Ctrl>+I    Enter canvas mode
+  <Ctrl>+S    Save Document
+
+ Canvas mode:
+   W    Increase Size
+   S    Decrease Size
+   D    Increase Velocity Effect
+   A    Decrease Velocity Effect
+   C    Next Colour
+   X    Previous Colour
+   Z    Toggle Eraser
+   V    Toggle Highlighter
+   B    Cycle Background
+   Q    Clear Screen
+
+  <Return>    Auto-crop and insert
+              or save image on server*
+
+ Input box:
+  <Return>    Load Document
+
+*not implemented, see Dot-Markup document 'canvas' for working example
