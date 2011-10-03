@@ -612,15 +612,32 @@ var CanvasNotes = {
 
     var canvas  = CanvasNotes.canvasAutoCrop();
     var img     = canvas[0].toDataURL();
+    var fn = $('#cn_input').val();
     
     //console.log("<img src='"+img+"' alt='sketch' />");
+    
+    $.ajax({
+      async: false,
+      cache: false,
+      data: {pic: img, mode: 'save_image', fn: fn },
+      dataType: 'json',
+      success: function(data){
+        console.log("Saved");
+        console.log(data);
     
     CanvasNotes.setCanvas(false);
     
     CanvasNotes.editor.setCursor(CanvasNotes.CodeMirrorCursor);
     console.log(CanvasNotes.editor.getCursor());
     CanvasNotes.editor.focus();
-    CanvasNotes.editor.replaceSelection("{{{<img src='"+img+"' alt='sketch' class='cn_sketch' />}}}\n");
+    //CanvasNotes.editor.replaceSelection("{{{<img src='"+img+"' alt='sketch' class='cn_sketch' />}}}\n");
+    CanvasNotes.editor.replaceSelection("[[img:"+data.img+" CanvasSketch]]\n");
+    
+      },
+      type: 'POST',
+      url: "sys/notes.php"
+    });
+    //CanvasNotes.editor.replaceSelection("[<img src='"+img+"' alt='sketch' class='cn_sketch' />}}}\n");
     //CanvasNotes.editor.replaceSelection("Hello");
   },
   
@@ -641,7 +658,7 @@ var CanvasNotes = {
       data: {dm: dm, mode: 'save', fn: fn },
       success: function(data){
         console.log("Saved success?");
-        //console.log(data);
+        console.log(data);
       },
       type: 'POST',
       url: "sys/notes.php"
@@ -666,6 +683,7 @@ var CanvasNotes = {
       dataType: 'json',
       success: function(data){
         console.log("Parsed");
+        //console.log(data);
         $('#cn_iframe').contents().find('body').html(data.html);
       },
       type: 'POST',
