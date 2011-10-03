@@ -685,6 +685,8 @@ var CanvasNotes = {
         console.log("Parsed");
         //console.log(data);
         $('#cn_iframe').contents().find('body').html(data.html);
+        $('#cn_iframe')[0].contentWindow.MathJax.Hub.Typeset();
+        //MathJax.Hub.Typeset();
       },
       type: 'POST',
       url: "sys/notes.php"

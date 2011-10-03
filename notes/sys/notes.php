@@ -41,3 +41,27 @@ function genRandomString() {
     }
     return $string;
 }
+
+function html5($body) {
+    
+    return <<<EDF
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML5</title>
+  
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Sebastian Mellor &lt;sebble@sebble.com&gt;" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+$body
+</body>
+</html>
+EDF;
+}
