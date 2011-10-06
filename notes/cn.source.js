@@ -94,12 +94,12 @@ var CanvasNotes = {
     }else if(CanvasNotes.viewMode=='canvas'){
       switch(e.keyCode){
         case 87: // W
-          CanvasNotes.lineWidth++;
+          CanvasNotes.lineWidth = CanvasNotes.lineWidth + 0.5;
           console.log("Width: "+CanvasNotes.lineWidth);
           CanvasNotes.canvasDrawStatus();
           break;
         case 83: // S
-          CanvasNotes.lineWidth--;
+          CanvasNotes.lineWidth = CanvasNotes.lineWidth - 0.5;
           if(CanvasNotes.lineWidth<1) CanvasNotes.lineWidth=1;
           console.log("Width: "+CanvasNotes.lineWidth);
           CanvasNotes.canvasDrawStatus();
